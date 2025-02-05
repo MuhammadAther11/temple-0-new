@@ -1,101 +1,75 @@
 import Image from "next/image";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+// import TopPick from "./components/Toppick";
+// import Blog from "./components/Blog";
+import { Poppins } from "next/font/google";
+import Link from "next/link";
+
+const poppins = Poppins({
+  weight: ["500", "400", "300", "200", "600"],
+  subsets: ["latin"],
+});
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className={poppins.className}>
+      <div className="bg-[#FBEBB5]">
+        <Header />
+        <HeroSection />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Featured Section */}
+        <div className="bg-[#FAF4F4] py-10 px-5 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="text-center md:text-left">
+            <Image src="/Granite square side table 1.png" alt="Side Table" width={300} height={300} className="mx-auto md:mx-0" />
+            <h1 className="text-2xl font-medium mt-4">Side Table</h1>
+            <div className="mt-2 border-b-2 border-black w-24 mx-auto md:mx-0">
+              <Link href="/Shop">View More</Link>
+            </div>
+          </div>
+
+          <div className="text-center md:text-left">
+            <Image src="/Cloud sofa three seater + ottoman_3 1.png" alt="Cloud Sofa" width={300} height={300} className="mx-auto md:mx-0" />
+            <h1 className="text-2xl font-medium mt-4">Cloud Sofa</h1>
+            <div className="mt-2 border-b-2 border-black w-24 mx-auto md:mx-0">
+              <Link href="/Shop">View More</Link>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Top Picks Section */}
+        <h1 className="text-2xl font-semibold text-center mt-12 mb-4">Top Picks For You</h1>
+        <p className="text-center text-sm text-[#9F9F9F]">Find a bright ideal to suit your taste with our great selection.</p>
+        {/* <TopPick /> */}
+
+        <div className="text-center mt-6">
+          <Link href="/Shop">
+            <p className="inline-block border-b-2 border-black">View More</p>
+          </Link>
+        </div>
+
+        {/* New Arrivals Section */}
+        <div className="bg-[#FFF9E5] py-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
+          <Image src="/Asgaard sofa 1.png" alt="Asgaard Sofa" width={350} height={350} className="md:w-1/2" />
+          <div className="md:ml-10">
+            <p className="text-gray-500 text-sm uppercase">New Arrivals</p>
+            <h1 className="font-bold text-3xl md:text-4xl">Asgaard Sofa</h1>
+            <button className="mt-4 px-6 py-2 border border-black">Order Now</button>
+          </div>
+        </div>
+
+        {/* <Blog /> */}
+
+        {/* Instagram Section */}
+        <div className="relative text-center py-10">
+          <Image src="/Rectangle 17.png" alt="Instagram Banner" width={1020} height={50} className="w-full h-48 object-cover" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <h1 className="text-2xl md:text-4xl font-bold">Our Instagram</h1>
+            <p className="text-sm md:text-base">Follow our store on Instagram</p>
+            <button className="mt-2 px-6 py-2 bg-[#FAF4F4] shadow rounded-3xl">Follow Us</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
