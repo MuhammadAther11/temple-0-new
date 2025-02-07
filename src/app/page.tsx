@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-// import TopPick from "./components/Toppick";
-// import Blog from "./components/Blog";
+import TopPick from "./components/Toppick";
+import Blog from "./components/blog";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
 
@@ -15,9 +15,9 @@ export default function Home() {
   return (
     <div className={poppins.className}>
       <div className="bg-[#FBEBB5]">
-        <Header />
+        <Header/>
         <HeroSection />
-
+        </div>
         {/* Featured Section */}
         <div className="bg-[#FAF4F4] py-10 px-5 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="text-center md:text-left">
@@ -40,7 +40,7 @@ export default function Home() {
         {/* Top Picks Section */}
         <h1 className="text-2xl font-semibold text-center mt-12 mb-4">Top Picks For You</h1>
         <p className="text-center text-sm text-[#9F9F9F]">Find a bright ideal to suit your taste with our great selection.</p>
-        {/* <TopPick /> */}
+        <TopPick />
 
         <div className="text-center mt-6">
           <Link href="/Shop">
@@ -58,7 +58,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* <Blog /> */}
+        <Blog />
 
         {/* Instagram Section */}
         <div className="relative text-center py-10">
@@ -70,6 +70,5 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

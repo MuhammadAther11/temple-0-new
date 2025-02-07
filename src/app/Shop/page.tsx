@@ -6,7 +6,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { HiViewGrid } from "react-icons/hi";
 import { TbLayoutDistributeHorizontal } from "react-icons/tb";
 import { FaSliders } from "react-icons/fa6";
-// import TopPick from "../components/Toppick";
+import TopPick from "../components/Toppick";
 import Main from "../components/Main";
 import { Poppins } from "next/font/google";
 
@@ -116,6 +116,8 @@ export default function Shop() {
     </div>
   ))}
 </div>
+      <TopPick />
+      
 
       <div className="flex justify-center gap-4 my-8">
         {[1, 2, 3, "Next"].map((item, index) => (
@@ -127,6 +129,7 @@ export default function Shop() {
           </div>
         ))}
       </div>
+
 
       <Main />
     </div>

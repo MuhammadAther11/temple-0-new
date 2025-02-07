@@ -24,7 +24,8 @@ export default function Footer() {
             </div>
 
             {/* Links Section */}
-            <div   className="ml-16">
+            
+            <div  className="ml-16">
               <h3 className="text-[#9F9F9F] text-sm mb-4">Links</h3>
               <ul className="space-y-7">
                 <li><Link href="/" className="hover:text-gray-600">Home</Link></li>

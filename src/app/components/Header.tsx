@@ -12,15 +12,10 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white shadow-md">
+    <header className=" shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center p-4">
-        {/* Logo */}
-        <Link href="/">
-          {/* <Image src="/ather.png" alt="Logo" width={50} height={50} /> */}
-        </Link>
-
         {/* Desktop Menu */}
-        <nav className="hidden md:flex gap-10">
+        <nav className="hidden md:flex gap-10 items-center lg:ml-72 ">
           <Link href="/" className="hover:text-blue-500">Home</Link>
           <Link href="/Shop" className="hover:text-blue-500">Shop</Link>
           <Link href="/About" className="hover:text-blue-500">About</Link>
@@ -32,9 +27,9 @@ export default function Header() {
           <a href="/Account">
             <Image src="/ather.png" alt="Account" width={25} height={25} />
           </a>
-          <a href=""><CgSearch size={25} /></a>
-          <a href=""><BiHeart size={25} /></a>
-          <a href="/Cart"><AiOutlineShoppingCart size={25} /></a>
+          <a href="" className="hover:text-blue-500"><CgSearch size={25} /></a>
+          <a href="" className="hover:text-blue-500"><BiHeart size={25} /></a>
+          <a href="/Cart" className="hover:text-blue-500"><AiOutlineShoppingCart size={25} /></a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -50,7 +45,31 @@ export default function Header() {
           <Link href="/Shop" className="hover:text-blue-500">Shop</Link>
           <Link href="/About" className="hover:text-blue-500">About</Link>
           <Link href="/Contact" className="hover:text-blue-500">Contact</Link>
-        </nav>
+        
+      
+      <div className="flex md:hidden  justify-between gap-10 items-center p-4">
+      {/* Search Bar */}
+      <div className="flex items-center gap-4">
+        <Link href="/#">
+        <CgSearch size={20} />
+        </Link>
+      </div>
+      {/* User Account Dropdown */}
+      <div className="flex items-center gap-4">
+        <a href="/Account">
+          <Image src="/ather.png" alt="Account" width={30} height={30} />
+        </a>
+      </div>
+      {/* Cart Icon */}
+      <Link href="/Cart">
+        <AiOutlineShoppingCart size={30} />
+      </Link>
+      {/* Shopping Bag Icon */}
+      <Link href="/Cart">
+        <BiHeart size={30} />
+      </Link>
+      </div>
+      </nav>
       )}
     </header>
   );
