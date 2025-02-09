@@ -1,36 +1,53 @@
+'use client'
 
+import Main from "../components/Main";
 import Header from "../components/Header";
-import Link from "next/link";
-import Image from "next/image";
+import { useEffect, useState } from "react"
+import { Product } from "../../../type/products"
+import { client } from "@/sanity/lib/client"
+import { twenty} from "@/sanity/lib/queries"
+import { urlFor } from "@/sanity/lib/image"
+import Image from "next/image"
+import Link from "next/link"
+import { addToCart } from "../action/action"
+import swal from 'sweetalert2'
+import { Poppins } from "next/font/google";
 import { IoIosArrowForward } from "react-icons/io";
 import { HiViewGrid } from "react-icons/hi";
 import { TbLayoutDistributeHorizontal } from "react-icons/tb";
 import { FaSliders } from "react-icons/fa6";
-import TopPick from "../components/Toppick";
-import Main from "../components/Main";
-import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
   weight: ['500', '400', '300', '200', '600'],
   subsets: ['latin'],
 });
 
-const products = [
-  { id: 1, name: "Grain Coffee Table", price: "Rs. 15,000.00", image: "/Grain coffee table 1.png" },
-  { id: 2, name: "Kent Coffee Table", price: "Rs. 225,000.00", image: "/Kent coffee table 1.png" },
-  { id: 3, name: "Round coffee table_color ", price: "Rs. 251,000.00", image: "/Round coffee table_color 2 1.png" },
-  { id: 4, name: "Reclamimed teak coffee  table", price: "Rs. 25,200.00", image: "/Reclaimed teak coffee table 1.png" },
-  { id: 5, name: "Plane console_", price: "Rs. 275,000.00", image: "/Mask group.png" },
-  { id: 6, name: "Reclaimed teak Sideboard", price: "Rs. 10,000.00", image: "/Reclaimed teak Sideboard 1.png" },
-  { id: 7, name: "SJP_0825", price: "Rs. 5,000.00", image: "/Mask group (1).png" },
-  { id: 8, name: "Bella chair and table", price: "Rs. 8,000.00", image: "/Mask group (2).png" },
-  { id: 9, name: "Granite square side table", price: "Rs. 15,000.00", image: "/Mask group (3).png" },
-  { id: 10, name: "Asgaard sofa", price: "Rs. 10,000.00", image: "/Asgaard sofa 1.png" },
-  { id: 11, name: "Maya sofa three seater ", price: "Rs. 15,000.00", image: "/Mask group (4).png" },
-  { id: 12, name: "Outdoor sofa set", price: "Rs. 225,000.00", image: "/Mask group (5).png" },
-];
 
 export default function Shop() {
+  const [product , setProduct] = useState<Product[]>([])
+  
+  useEffect(() => {
+  
+      async function fetchProducts() {
+          const fetchProducts : Product[] = await client.fetch(twenty)
+          setProduct(fetchProducts)
+      }
+      fetchProducts()
+  }, [])
+  
+  
+  const handleAddToCart = (e : React.MouseEvent , product : Product)=>{
+      e.preventDefault()
+      swal.fire({
+        position : 'top-right',
+        icon : 'success',
+        title : `${product.name} added to cart`,
+        showConfirmButton : false,
+        timer : 1000
+      })
+      addToCart(product)
+      
+  }
   return (
     <div className={poppins.className}>
       <Header />
@@ -96,41 +113,34 @@ export default function Shop() {
           </div>
         </div>
       </div>
-
-      {/* <TopPick /> */}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-  {products.map((product) => (
-    <div key={product.id} className="bg-white p-4 rounded-lg shadow-md">
-      <Image
-        src={product.image}
-        alt={product.name}
-        width={180}
-        height={180}
-        className="w-full h-auto"
-      />
-      <div className="mt-4">
-        <p className="text-sm">{product.name}</p>
-        <p className="font-semibold mt-2">{product.price}</p>
-      </div>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  {product.map((product) =>(
+    <div key={product._id}
+    className="border rounded-lg shadow-md p-4 hover:shadow-lg transition duration-200">
+      <Link href={`/product/${product.slug.current}`}>
+        {product.image &&(
+            <Image
+             src={urlFor(product.image).url()} 
+            alt="image" 
+            width={200} height={200} 
+            className="w-full h-48 object-cover rounded-md"/>
+        )}
+      <h1 className="font-semibold text-lg mt-4">  {product.name}</h1>
+         <h1 className="text-gray-500 mt-2"> {product.price}  </h1>  
+         <button className="bg-gradient-to-r from-blue-500 to bg-purple-500 text-white font-semibold
+         py-2 px-4 rounded-lg  hover:scale-110 transition-transform duration-300
+         ease-in-out "
+         onClick={(e)=>handleAddToCart(e, product)}
+         >
+          Add To Cart
+          </button>   
+          </Link>
+        </div>
+  )
+  )}
+  </div>
     </div>
-  ))}
-</div>
-      <TopPick />
-      
-
-      <div className="flex justify-center gap-4 my-8">
-        {[1, 2, 3, "Next"].map((item, index) => (
-          <div
-            key={index}
-            className="w-10 h-10 bg-[#FFF9E5] flex items-center justify-center rounded-md cursor-pointer"
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-
-
       <Main />
     </div>
   );

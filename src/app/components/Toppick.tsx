@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Product } from "../../../type/products"
 import { client } from "@/sanity/lib/client"
-import { allProducts  , four } from "@/sanity/lib/queries"
+import {four } from "@/sanity/lib/queries"
 import { urlFor } from "@/sanity/lib/image"
 import Image from "next/image"
 import Link from "next/link"
@@ -17,7 +17,7 @@ const [product , setProduct] = useState<Product[]>([])
 useEffect(() => {
 
     async function fetchProducts() {
-        const fetchProducts : Product[] = await client.fetch(allProducts)
+        const fetchProducts : Product[] = await client.fetch(four)
         setProduct(fetchProducts)
     }
     fetchProducts()

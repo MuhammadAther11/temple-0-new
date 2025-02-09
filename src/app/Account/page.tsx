@@ -1,17 +1,11 @@
 'use client'
 
-import { useState } from "react";
+
 import Header from "../components/Header";
 import Image from "next/image";
 import Link from "next/link";
-// import { motion } from "framer-motion"
-// import { Label } from "@/components/ui/label";
-// import { Input } from "@/components/ui/input";
-// import { Checkbox } from "@/components/ui/checkbox";
 import { IoIosArrowForward } from "react-icons/io";
 import { Poppins } from 'next/font/google'
-// import { Button } from "@/components/ui/button";
-// import { Eye, EyeOff } from "lucide-react";
 import Main from "../components/Main";
 
 
@@ -21,11 +15,6 @@ const poppins = Poppins({
     subsets: ['latin'],
   })
 export default function Account(){
-  const [name, setName] = useState('')
-  const [email, setemail] = useState('')
-  const [password, setPassword] = useState('')
-
-
     return(
       
             <div className={poppins.className}>
