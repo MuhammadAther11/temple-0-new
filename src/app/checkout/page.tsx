@@ -8,7 +8,6 @@ import { Product } from "../../../type/products";
 import { urlFor } from "@/sanity/lib/image";
 import { CgChevronRight } from "react-icons/cg";
 import Header from "../components/Header";
-import { Poppins } from "next/font/google";
 import {IoIosArrowForward } from "react-icons/io";
 
 
