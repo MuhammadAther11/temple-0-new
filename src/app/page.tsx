@@ -42,7 +42,7 @@ export default function Home() {
         <p className="text-center text-sm text-[#9F9F9F]">Find a bright ideal to suit your taste with our great selection.</p>
         <TopPick />
 
-        <div className="text-center mt-6">
+        <div className="text-center mt-4 mb-4">
           <Link href="/Shop">
             <p className="inline-block border-b-2 border-black">View More</p>
           </Link>

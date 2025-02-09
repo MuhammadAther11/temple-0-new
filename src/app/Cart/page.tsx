@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { urlFor } from "@/sanity/lib/image";
 import { IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; 
 
 const poppins = Poppins({
     weight: ['500','400', '300','200','600'],
@@ -73,7 +74,8 @@ useEffect(()=>{
    return cartItems.reduce((total , item) => total + item.price * item.stockLevel , 0)
  }
 
-const handleProceed = () => {
+ const router = useRouter()
+ const handleProceed = () => {
   Swal.fire({
     title:"Proceed to checkout",
     text: "You are about to proceed to checkout", 
@@ -89,6 +91,9 @@ const handleProceed = () => {
           'Your order has been successfully processed',
           'success'
         )
+
+        router.push("/checkout")
+
         setCartItems([])
       }
   });
@@ -111,7 +116,7 @@ const handleProceed = () => {
 </div>
 </div>
 </div>
-  <div className="p-6 bg-gray-100 min-h-screen">
+  <div className="p-6 -mt-20 bg-gray-100 min-h-screen">
    
       <h1 className="text-2xl font-bold mb-6 text-gray-800">Shopping Cart</h1>
 
