@@ -52,67 +52,68 @@ export default function Shop() {
     <div className={poppins.className}>
       <Header />
       <div className="relative">
-        <div className="w-full h-auto">
-          <Image
-            src={"/Rectangle 1.png"}
-            alt="Banner"
-            layout="responsive"
-            width={1020}
-            height={316}
-          />
-        </div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-          <div className="relative">
-            <Image
-              src={"/bhai.png"}
-              alt="Logo"
-              width={70}
-              height={70}
-              className="mx-auto"
-            />
-            <h1 className="text-4xl md:text-5xl font-medium mt-2">Shop</h1>
-            <div className="flex justify-center items-center mt-2">
-              <Link href="/" className="font-medium text-sm md:text-base">
-                Home
-              </Link>
-              <IoIosArrowForward size={16} className="mx-1" />
-              <Link href="/Shop" className="font-light text-sm md:text-base">
-                Shop
-              </Link>
-            </div>
-          </div>
-        </div>
+  <div className="w-full h-auto">
+    <Image
+      src={"/Rectangle 1.png"}
+      alt="Banner"
+      layout="responsive"
+      width={1020}
+      height={316}
+      className="object-cover"
+    />
+  </div>
+  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+    <div className="relative">
+      <Image
+        src={"/bhai.png"}
+        alt="Logo"
+        width={70}
+        height={70}
+        className="mx-auto"
+      />
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium mt-2">Shop</h1>
+      <div className="flex justify-center items-center mt-2">
+        <Link href="/" className="font-medium text-xs sm:text-sm md:text-base">
+          Home
+        </Link>
+        <IoIosArrowForward size={16} className="mx-1" />
+        <Link href="/Shop" className="font-light text-xs sm:text-sm md:text-base">
+          Shop
+        </Link>
       </div>
+    </div>
+  </div>
+</div>
 
-      <div className="bg-[#FAF4F4] py-4 mt-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-between items-center">
-            <div className="flex items-center gap-4">
-              <FaSliders size={18} />
-              <p className="text-sm md:text-base">Filter</p>
-              <HiViewGrid size={20} />
-              <TbLayoutDistributeHorizontal size={20} />
-            </div>
-            <div className="text-sm md:text-base">
-              Showing 1-16 of 32 results
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <p>Show</p>
-                <div className="w-10 h-10 bg-white flex items-center justify-center">
-                  16
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <p>Sort by</p>
-                <div className="w-24 h-10 bg-white flex items-center justify-center">
-                  Default
-                </div>
-              </div>
-            </div>
+<div className="bg-[#FAF4F4] py-4 mt-8">
+  <div className="container mx-auto px-4">
+    <div className="flex flex-wrap justify-between items-center">
+      <div className="flex items-center gap-4">
+        <FaSliders size={18} />
+        <p className="text-xs sm:text-sm md:text-base">Filter</p>
+        <HiViewGrid size={20} />
+        <TbLayoutDistributeHorizontal size={20} />
+      </div>
+      <div className="text-xs sm:text-sm md:text-base">
+        Showing 1-16 of 32 results
+      </div>
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <p className="text-xs sm:text-sm md:text-base">Show</p>
+          <div className="w-10 h-10 bg-white flex items-center justify-center">
+            16
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <p className="text-xs sm:text-sm md:text-base">Sort by</p>
+          <div className="w-24 h-10 bg-white flex items-center justify-center">
+            Default
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
       <div className="max-w-6xl mx-auto px-4 py-8">
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
   {product.map((product) =>(
