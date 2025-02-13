@@ -63,7 +63,7 @@ export default function Shop() {
     />
   </div>
   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-    <div className="relative">
+    <div className="relative -mt-5">
       <Image
         src={"/bhai.png"}
         alt="Logo"
@@ -71,8 +71,8 @@ export default function Shop() {
         height={70}
         className="mx-auto"
       />
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium mt-2">Shop</h1>
-      <div className="flex justify-center items-center mt-2">
+      <h1 className="text-3xl sm:text-3xl md:text-4xl font-medium ">Shop</h1>
+      <div className="flex justify-center items-center mt-3">
         <Link href="/" className="font-medium text-xs sm:text-sm md:text-base">
           Home
         </Link>
