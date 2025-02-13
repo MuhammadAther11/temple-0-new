@@ -88,8 +88,8 @@ export default function Shop() {
 <div className="bg-[#FAF4F4] py-4 mt-8">
   <div className="container mx-auto px-4">
     <div className="flex flex-wrap justify-between items-center">
-      <div className="flex items-center gap-4">
-        <FaSliders size={18} />
+      <div className="flex items-center gap-4 ">
+        <FaSliders size={16}  />
         <p className="text-xs sm:text-sm md:text-base">Filter</p>
         <HiViewGrid size={20} />
         <TbLayoutDistributeHorizontal size={20} />
@@ -100,13 +100,13 @@ export default function Shop() {
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
           <p className="text-xs sm:text-sm md:text-base">Show</p>
-          <div className="w-10 h-10 bg-white flex items-center justify-center">
+          <div className="w-10 h-10 bg-white flex items-center justify-center text-xs sm:text-sm md:text-base">
             16
           </div>
         </div>
         <div className="flex items-center gap-2">
           <p className="text-xs sm:text-sm md:text-base">Sort by</p>
-          <div className="w-24 h-10 bg-white flex items-center justify-center">
+          <div className="w-24 h-10 bg-white flex items-center justify-center text-xs sm:text-sm md:text-base">
             Default
           </div>
         </div>
