@@ -124,4 +124,8 @@ export default function Account() {
       <Main />
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9dd5e51dcda028a4e7f31520b8e45947243537eb
