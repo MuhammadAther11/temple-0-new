@@ -8,11 +8,12 @@ import { Product } from "../../../type/products";
 import { urlFor } from "@/sanity/lib/image";
 import { CgChevronRight } from "react-icons/cg";
 import Header from "../components/Header";
-import { Poppins } from "next/font/google";
 import {IoIosArrowForward } from "react-icons/io";
+import { client } from "@/sanity/lib/client";
+import Swal from "sweetalert2";
 
 
-export default function CheckoutPage() {
+export default function Checkout() {
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [discount, setDiscount] = useState<number>(0);
   const [formValues, setFormValues] = useState({
@@ -37,7 +38,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     setCartItems(getCartItems());
-    const appliedDiscount = localStorage.getItem("appliedDiscount");
+    const appliedDiscount = localStorage.getItem("appliedDiscount")
     if (appliedDiscount) {
       setDiscount(Number(appliedDiscount));
     }
@@ -48,6 +49,7 @@ export default function CheckoutPage() {
     0
   );
   const total = Math.max(subtotal - discount, 0);
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
@@ -70,12 +72,51 @@ export default function CheckoutPage() {
     return Object.values(errors).every((error) => !error);
   };
 
-  const handlePlaceOrder = () => {
-    if (validateForm()) {
-      localStorage.removeItem("appliedDiscount");
-    //   toast.success("Order placed successfully!");
-    } else {
-    //   toast.error("Please fill in all the fields.");
+  const handlePlaceOrder = async () => {
+    
+     Swal.fire({
+      title: "proceed your order...",
+      text: "Please wait while we process your order.",
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, Place Order',
+      cancelButtonColor: '#d33',
+     }).then((result) => {
+       if (result.isConfirmed) {
+        if (validateForm()){
+          localStorage.removeItem("appliedDiscount");
+          Swal.fire(" Success", "Thank you for shopping with us.", "success");
+        } else {
+          Swal.fire("Error", "Please confirm all fields are filled out correctly.", "error");
+        }
+      }
+    }
+  );
+
+    const orderData = {
+      _type : "order",
+      firstName: formValues.firstName,
+      lastName: formValues.lastName,
+      address: formValues.address,
+      city: formValues.city,
+      zipCode: formValues.zipCode,
+      phone: formValues.phone,
+      email: formValues.email,
+      cartItems: cartItems.map(item => ({
+        _type: "reference",
+        _ref: item._id,
+      })),
+      total: total,
+      discount: discount,
+      orderData : new Date().toISOString,
+  };
+
+  try {
+    await client.create(orderData);
+    localStorage.removeItem("appliedDiscount");
+    } catch (error) {
+      console.error("Error creating order:", error);
     }
   };
 
@@ -187,13 +228,13 @@ export default function CheckoutPage() {
             <h2 className="text-xl font-semibold">Billing Information</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName">First Name</label>
+                <label htmlFor="firstName">First Name </label>
                 <input
                   id="firstName"
                   placeholder="Enter your first name"
-                  value={formValues.firstName}
+                  value=  {formValues.firstName}
                   onChange={handleInputChange}
-                  className="border"
+                  className="border bg-slate-300 rounded-lg"
                 />
                 {formErrors.firstName && (
                   <p className="text-sm text-red-500">
@@ -208,6 +249,7 @@ export default function CheckoutPage() {
                   placeholder="Enter your last name"
                   value={formValues.lastName}
                   onChange={handleInputChange}
+                   className="border"
                 />
                 {formErrors.lastName && (
                   <p className="text-sm text-red-500">
@@ -223,57 +265,61 @@ export default function CheckoutPage() {
                 placeholder="Enter your address"
                 value={formValues.address}
                 onChange={handleInputChange}
+                 className="border"
               />
               {formErrors.address && (
                 <p className="text-sm text-red-500">Address is required.</p>
               )}
             </div>
             <div>
-              <label htmlFor="city">City</label>
+              <label htmlFor="city">City </label>
               <input
                 id="city"
                 placeholder="Enter your city"
                 value={formValues.city}
                 onChange={handleInputChange}
-              />
+                className="border"/>
               {formErrors.city && (
                 <p className="text-sm text-red-500">City is required.</p>
               )}
             </div>
             <div>
-              <label htmlFor="zipCode">Zip Code</label>
+              <label htmlFor="zipCode">Zip Code </label>
               <input
                 id="zipCode"
                 placeholder="Enter your zip code"
                 value={formValues.zipCode}
                 onChange={handleInputChange}
+                 className="border"
               />
               {formErrors.zipCode && (
                 <p className="text-sm text-red-500">Zip Code is required.</p>
               )}
             </div>
             <div>
-              <label htmlFor="phone">Phone</label>
+              <label htmlFor="phone">Phone </label>
               <input
                 id="phone"
                 placeholder="Enter your phone number"
                 value={formValues.phone}
                 onChange={handleInputChange}
+                 className="border"
               />
               {formErrors.phone && (
                 <p className="text-sm text-red-500">Phone is required.</p>
               )}
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email </label>
               <input
                 id="email"
-                placeholder="Enter your email address"
+                placeholder="Enter your email address "
                 value={formValues.email}
                 onChange={handleInputChange}
+                 className="border"
               />
               {formErrors.email && (
-                <p className="text-sm text-red-500">Email is required.</p>
+                <p className="text-sm text-red-500">Email is required. </p>
               )}
             </div>
             <button

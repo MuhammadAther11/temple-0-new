@@ -24,12 +24,12 @@ export default function Header() {
 
         {/* Icons */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="/Account">
+          <Link href="/Account">
             <Image src="/ather.png" alt="Account" width={25} height={25} />
-          </a>
-          <a href="" className="hover:text-blue-500"><CgSearch size={25} /></a>
-          <a href="" className="hover:text-blue-500"><BiHeart size={25} /></a>
-          <a href="/Cart" className="hover:text-blue-500"><AiOutlineShoppingCart size={25} /></a>
+          </Link>
+          <Link href="" className="hover:text-blue-500"><CgSearch size={25} /></Link>
+          <Link href="" className="hover:text-blue-500"><BiHeart size={25} /></Link>
+          <Link href="/Cart" className="hover:text-blue-500"><AiOutlineShoppingCart size={25} /></Link>
         </div>
 
         {/* Mobile Menu Button */}

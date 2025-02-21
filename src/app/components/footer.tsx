@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {/* Address Section */}
             <div className="mb-8 sm:mb-0 mt-14">
-              <p className="text-[#9F9F9F] text-sm w-[285px]">
+              <p className="text-[#9F9F9F] text-sm w-full sm:w-[285px]">
                 400 University Drive Suite 200 Coral 
                 Gables, <br />
                 FL 33134 USA
@@ -24,8 +24,7 @@ export default function Footer() {
             </div>
 
             {/* Links Section */}
-            
-            <div  className="ml-16">
+            <div className="ml-0 sm:ml-16">
               <h3 className="text-[#9F9F9F] text-sm mb-4">Links</h3>
               <ul className="space-y-7">
                 <li><Link href="/" className="hover:text-gray-600">Home</Link></li>
@@ -36,7 +35,7 @@ export default function Footer() {
             </div>
 
             {/* Help Section */}
-            <div  className="-ml-10">
+            <div className="ml-0 sm:-ml-10">
               <h3 className="text-[#9F9F9F] text-sm mb-4">Help</h3>
               <ul className="space-y-7">
                 <li><a href="#" className="hover:text-gray-600">Payment Options</a></li>
@@ -46,7 +45,7 @@ export default function Footer() {
             </div>
 
             {/* Newsletter Section */}
-            <div className="-ml-20">
+            <div className="ml-0 sm:-ml-20">
               <h3 className="text-[#9F9F9F] text-sm mb-4">Newsletter</h3>
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
@@ -66,7 +65,7 @@ export default function Footer() {
           <hr className="my-8 border-gray-300" />
 
           {/* Copyright Section */}
-          <div className="text-left  text-sm ">
+          <div className="text-left text-sm">
             <p>2022 Meubel House. All rights reserved</p>
           </div>
         </div>
